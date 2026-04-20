@@ -164,6 +164,7 @@ namespace Yotepad
             _mainTextBox.Dock = DockStyle.Fill;
             _mainTextBox.Font = new Font("Consolas", 11F);
             _mainTextBox.ScrollBars = ScrollBars.Both;
+            _mainTextBox.WordWrap = false;
             _mainTextBox.AcceptsTab = true;
             _mainTextBox.BorderStyle = BorderStyle.None;
             _mainTextBox.HideSelection = false;
@@ -381,7 +382,7 @@ namespace Yotepad
             var formatMenu = new ToolStripMenuItem("F&ormat");
             _wordWrapMenuItem.CheckOnClick = true;
             _wordWrapMenuItem.CheckedChanged += (s, e) => ToggleWordWrap();
-            _wordWrapMenuItem.Checked = true;
+            _wordWrapMenuItem.Checked = false;
             formatMenu.DropDownItems.Add(_wordWrapMenuItem);
             formatMenu.DropDownItems.Add(new ToolStripMenuItem("Font...", null, (s, e) => 
             {
