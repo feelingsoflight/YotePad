@@ -697,6 +697,9 @@ namespace Yotepad
         {
             switch (keyData)
             {
+                case Keys.Control | Keys.W:
+                    this.Close();
+                    return true;
                 case Keys.Control | Keys.Oemplus:
                 case Keys.Control | Keys.Add:
                 case Keys.Control | Keys.Shift | Keys.Oemplus:
