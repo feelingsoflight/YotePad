@@ -84,10 +84,21 @@ namespace Yotepad
             _themeManager.InitializeTheme();
             RefreshTheme();
 
-            if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
-                LoadInitialFile(filePath);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                if (File.Exists(filePath))
+                {
+                    LoadInitialFile(filePath);
+                }
+                else
+                {
+                    InitializeMissingFilePath(filePath);
+                }
+            }
             else
+            {
                 UpdateUIState();
+            }
 
             // Skip recovery scan if this instance was launched from a recovery action
             if (!skipRecovery)
@@ -534,7 +545,7 @@ namespace Yotepad
             _fileService.SetFilePath(path);
             _mainTextBox.Text = string.Empty;
             _mainTextBox.SelectionStart = 0;
-            _isModified = false;
+            _isModified = true;
             _lastRecoveryContent = string.Empty;
             UpdateUIState();
         }
