@@ -14,6 +14,7 @@ namespace Yotepad
 
         private const int EM_GETFIRSTVISIBLELINE = 0x00CE;
         private const int EM_LINEINDEX = 0x00BB;
+        private const int EM_SCROLLCARET = 0x00B7;
 
         public event EventHandler? ViewportChanged;
 
@@ -41,7 +42,7 @@ namespace Yotepad
 
             base.WndProc(ref m);
 
-            if (m.Msg == WM_VSCROLL || m.Msg == WM_MOUSEWHEEL || m.Msg == WM_HSCROLL || m.Msg == WM_SIZE)
+            if (m.Msg == WM_VSCROLL || m.Msg == WM_MOUSEWHEEL || m.Msg == WM_HSCROLL || m.Msg == WM_SIZE || m.Msg == EM_SCROLLCARET)
             {
                 ViewportChanged?.Invoke(this, EventArgs.Empty);
             }
